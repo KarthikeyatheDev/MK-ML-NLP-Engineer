@@ -40,26 +40,30 @@ This project leverages **modern NLP techniques** to automatically classify email
 ---
 
 ## 📁 Folder Structure
-.
-├── data/ # Dataset CSV or source reference
-├── notebooks/ # EDA, preprocessing, and training notebooks
-├── src/ # Training and inference scripts
-├── models/ # Saved model files and tokenizer
-├── reports/ # Visualizations, reports, metrics
-├── README.md # Project documentation
-├── requirements.txt # Python dependencies
-├── submission.md # Project summary for submission
-├── train.py # Script to run training
 
----
+├── data/ # Dataset CSV or source reference
+
+├── notebooks/ # EDA, preprocessing, and training notebooks
+
+├── src/ # Training and inference scripts
+
+├── models/ # Saved model files and tokenizer
+
+├── reports/ # Visualizations, reports, metrics
+
+├── README.md # Project documentation
+
+├── requirements.txt # Python dependencies
+
+├── submission.md # Project summary for submission
+
+├── train.py # Script to run training
 
 
 ---
 
 ## 🔗 Dataset Source
 - **Kaggle:** [Email Spam Classification Dataset](https://www.kaggle.com/datasets/purusinghvi/email-spam-classification-dataset)
-
-Download the dataset manually and place it inside the `/data` folder.
 
 ---
 
@@ -74,10 +78,10 @@ Download the dataset manually and place it inside the `/data` folder.
 
 | Metric    | Score  |
 |-----------|--------|
-| Accuracy  | 95.2%  |
-| Precision | 94.8%  |
-| Recall    | 96.1%  |
-| F1-Score  | 95.4%  |
+| Accuracy  | 97.4%  |
+| Precision | 98.36%  |
+| Recall    | 96.95%  |
+| F1-Score  | 97.65%  |
 
 The model demonstrates high accuracy with a strong balance between precision and recall, indicating effective spam detection.
 
@@ -86,7 +90,71 @@ The model demonstrates high accuracy with a strong balance between precision and
 ## 🚀 How to Run the Project
 
 ### ✅ Install Dependencies
-```bash
+
 pip install -r requirements.txt
+
 python src/train.py
+
 python src/predict.py --text "Congratulations! You have won a free iPhone. Claim now!"
+
+---
+
+## 🏗️ Model Details
+Pretrained Model: DistilBERT (distilbert-base-uncased)
+
+Tokenizer: Hugging Face tokenizer with padding and truncation (max_length=95)
+
+Batch Size: 8
+
+Epochs: 5
+
+Optimizer: AdamW with weight decay
+
+Training Strategy:
+
+Evaluation at every epoch
+
+Checkpoint saving after each epoch
+
+---
+
+## 🚧 Challenges Faced
+⚠️ Training Time: Managed by using a subset (~5000 samples) and enabling mixed precision
+
+⚠️ Handling Text Length: Emails are longer than tweets or short reviews; optimized with max_length=95
+
+⚠️ Preventing Overfitting: Applied weight decay and evaluation at each epoch
+
+---
+
+## 📜 Conclusion
+This project demonstrates a practical implementation of transformer-based models for spam email detection. The solution is efficient, scalable, and achieves high performance even with limited compute resources.The modular structure allows easy extension to larger datasets or deployment scenarios.
+
+---
+
+## 👨‍💻 Author
+Karthikeya Mohan
+
+ML/NLP Engineer Internship Submission
+
+---
+
+## 🤝 Acknowledgements
+Hugging Face 🤗 for Transformers and Datasets
+
+Kaggle for the dataset
+
+Chakaralya Analytics for the project challenge
+
+## 🧠 Future Work
+✅ Deploy as a REST API or Streamlit web app
+
+✅ Extend training on the full dataset for better generalization
+
+✅ Integrate metadata features (sender info, timestamps)
+
+---
+
+## 📜 License
+
+This project is licensed for educational and project submission purposes.
